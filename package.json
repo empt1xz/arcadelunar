@@ -1,0 +1,16 @@
+{
+  "name": "arcadelunar-landingpage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "build": "if [ ! -d \"public\" ]; then mkdir public && cp ./src/index.html ./public/index.html; fi && npx tailwindcss -i ./src/input.css -o ./public/style.css", 
+    "postinstall": "chmod +x ./node_modules/.bin/tailwindcss"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.4"
+  }
+}
