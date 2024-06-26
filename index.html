@@ -1,0 +1,772 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./style.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="shortcut icon" href="assets/img/logoarcade (1).ico" type="image/x-icon">
+  <title>Arcade Lunar</title>
+  
+  <script defer src="assets/js/alpine.min.js"></script>
+  <style>
+    html {
+  scroll-behavior: smooth;
+}
+    .centered-section {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      max-height: 1300px;
+      color: white;
+      background-image: url('assets/img/Default_gamer_playing_videogame_photo_angul_from_his_back_1.jpg');
+      background-size: cover;
+      background-position: center;
+      z-index: 1;
+    }
+    .centered-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.65); /* Ajuste a opacidade conforme necessário */
+      z-index: -1;
+    }
+    .centered-content {
+      text-align: center;
+      z-index: 2;
+    }
+    .custom-font-class {
+            display: block;
+            width: 100%;
+            background: linear-gradient(to bottom, white, gray);
+            -webkit-background-clip: text;
+            background-clip: text;
+            font-weight: bold;
+            color: transparent;
+            font-size: 1.875rem; /* 3xl size */
+        }
+
+        .inter{
+           font-family: 'inter', sans-serif;
+        }
+
+        .poppins{
+          font-family: 'poppins', sans-serif;
+        }
+        #d:hover {
+          border-color: rgba(183, 0, 255, 0.1); /* Pink 500 com 10% de opacidade */
+          box-shadow: 0 0 10px rgba(219, 39, 119, 0.1); /* Sombra Pink 500 com 10% de opacidade */
+          }
+
+        .puro,.puro2{
+          height: 800px; /* Defina a altura desejada */
+    min-height: 100%; /* Ajuste conforme necessário */
+    display: flex; /* Alterado para flex para facilitar o alinhamento vertical */
+    
+    flex-direction: column;
+
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    position: relative;
+    align-items: center;
+    justify-items: center;
+    place-items: center;
+    border-radius: var(--token-48);
+    background: radial-gradient(140% 107.13% at 50% 20%, transparent 37.41%, #63e 69.27%, #fff 100%);
+    background-position:  top; 
+    margin-left: 1.4em;
+    margin-right: 1.4em;    
+    border-radius: 40px;      
+        }  
+
+        .puro2{
+          background: radial-gradient(150% 100.13% at 50% 80%, transparent 50.41%,#6935f8 68.27%, #fff 100%);
+          height: fit-content;
+        }
+
+        .textao{
+       
+        --x: 50%;
+        --y: 50%;
+        --width: 50%;
+        padding-bottom: .1em;
+        background: radial-gradient(50% 100% at 50% 50%, #fff 30%, hsla(0, 0%, 100%, .5) 100%);
+        background: radial-gradient(var(--width) 100% at var(--x) var(--y), #fff 30%, hsla(0, 0%, 100%, .5) 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        }
+        .azito{
+          width: 60px;
+          height: 60px;
+          display: block;
+          flex-shrink: 0;
+          position: relative;
+        }
+
+        .simbolos {
+        display: grid;
+        width: 100%;
+        height: 100%; 
+        border-radius: 16px;
+        align-items: center;
+        justify-items: center;
+        place-items: center;
+        -webkit-backdrop-filter: blur(2px);
+        backdrop-filter: blur(2px);
+        box-shadow: 0 8px 16px -4px rgba(0, 0, 0, .25), 0 4px 8px -2px rgba(0, 0, 0, .25), 0 1px 2px rgba(0, 0, 0, .2), inset 0 0 0 1px rgba(190, 167, 255, .24);
+        --gradient-offset: 100%;
+        background: linear-gradient(90deg, rgba(27,22,56,1) 0%, rgba(0,0,0,1) 100%);
+        transition: box-shadow .2s ease, --gradient-offset 1s ease;
+    }
+
+    .styles_label__xSnz_ {
+    left: calc(50% - 30px);
+    width: 60px;
+    top: 72px;
+    font-weight: 400;
+    font-size: .75rem;
+    position: absolute;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--grey-30);
+    
+    }
+
+    .styles_divider__elk7j {
+    position: relative;
+    width: 100%;
+    height: 120px; /* Ajuste conforme necessário */
+}
+
+.styles_divider__elk7j::before,
+.styles_divider__elk7j::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+}
+
+
+
+.styles_divider__elk7j::after {
+    top: 0;
+    width: 100%;
+    max-width: 1000px;
+    height: 80px;
+    left: calc(50% - 500px);
+    border-top: 1px solid;
+    border-image-source: linear-gradient(90deg, transparent, rgba(143, 120, 255, .5) 50%, transparent);
+    border-image-slice: 1;
+    background: radial-gradient(43.9% 100% at 50% 0, rgba(157, 137, 255, .15) 0, rgba(1, 3, 20, 0) 100%);
+}
+
+    .big{
+      display: flex;
+      flex-direction: row;
+      
+    }
+
+    .bigtwo{
+      padding-top: 4em; padding-right: 2em;
+      height:fit-content;
+    }
+
+    .bigtre{
+      height: fit-content;
+       padding: 5em 0em 5em 3em;
+       
+    }
+
+    .fixed-size {
+        width: 40px;
+        height: 40px;
+        max-width: 40px;  
+        max-height: 40px; 
+        min-height: 40px;
+        min-width: 40px;
+      }
+
+      .glass{
+          width: 200px;
+          height: 200px;
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 16px;
+          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+          backdrop-filter: blur(1.9px);
+          -webkit-backdrop-filter: blur(1.9px);
+      }
+
+      .block-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 32px;
+    transition: 250ms;
+    perspective: 500px;
+
+    .btn-back {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      width: inherit;
+      height: inherit;
+      border-radius: 32px;
+      transition: 250ms;
+      transform-style: preserve-3d;
+      transform-origin: bottom right;
+      transform: rotateZ(15deg);
+      will-change: transform;
+      box-shadow: 16px 0 40px #e4e4e4;
+    }
+
+    .btn-back-1 {
+      background: linear-gradient(135deg, #4682eb -20%, #01beff 120%);
+    }
+
+    .btn-back-2 {
+      background: linear-gradient(135deg, #5c46eb -20%, #013fff 120%);
+    }
+
+    .btn-back-3 {
+      background: linear-gradient(135deg, #ebe046 -20%, #ffac01 120%);
+    }
+
+    .btn-front {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      width: inherit;
+      height: inherit;
+      border-radius: 32px;
+      background-color: #ffffff33;
+      backdrop-filter: blur(20px);
+      transition: 250ms;
+      transform-style: preserve-3d;
+      transform-origin: top left;
+      overflow: hidden;
+
+      svg.frame {
+        width: inherit;
+        height: inherit;
+
+        rect {
+          width: inherit;
+          height: inherit;
+          fill: none;
+          stroke-width: 4;
+        }
+      }
+
+      svg.icon {
+        position: absolute;
+        inset: 50% 0 0 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &:hover {
+      & > .btn-back {
+        transform: translateZ(20px) rotateZ(15deg) rotateX(-20deg) rotateY(-20deg);
+      }
+
+      & > .btn-front {
+        transform: translateZ(80px) translateY(-5px) rotateX(15deg) rotateY(15deg);
+      }
+    }
+
+    
+  }
+
+  #my-section {
+      margin-top: 1000px; /* Apenas para criar uma rolagem visível */
+      padding: 20px;
+      background-color: #f0f0f0;
+    }
+
+
+
+
+    @media (max-width: 1000px) {
+      .big {
+      flex-direction: column;
+    
+      }
+      .bigtwo{
+      padding-bottom: 0; padding-right: 0em;
+      height: fit-content;
+      }
+      .bigtre{
+        height: fit-content;
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      #doacao{
+        margin-top: 10px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <header style="background-color: #010314;">
+    <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between" >
+        <div class="flex-1 md:flex md:items-center md:gap-12">
+          <a class="block text-teal-600 dark:text-teal-300" href="#">
+            <span class="sr-only">Home</span>
+            <img src="assets/img/logoarcade.png" alt="logo" style="width: 60px;">
+          </a>
+        </div>
+
+        <div class="md:flex md:items-center md:gap-12">
+          <nav aria-label="Global" class="hidden md:block">
+            <ul class="menu md:flex md:gap-4">
+              <li><a href="https://www.vakinha.com.br/vaquinha/ajude-arcade-lunar-se-tornar-realidade?utm_source=site&utm_medium=product-thanks-page" class="block px-4 py-2 inter" style="font-weight: 500; color: #ffffff;">Nos apoie</a></li>
+           
+            </ul>
+          </nav>
+
+          <div class="flex items-center gap-4">
+            <div class="sm:flex sm:gap-4">
+              <a
+                class="rounded-md px-5 py-2.5 text-sm font-medium shadow"
+                style="background-color: white; color: #010314;"
+                href="https://discord.com/invite/arcade-lunar-1199070914072019064"
+              >
+                Servidor do Discord
+              </a>
+
+              
+            </div>
+
+            <div class="block md:hidden">
+              <button
+                class="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75 dark:bg-gray-800 dark:text-white dark:hover:text-white/75"
+                id="menu-button"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu para dispositivos móveis -->
+      <div class="menu md:hidden" id="mobile-menu">
+        <ul>
+          <li><a href="https://www.vakinha.com.br/vaquinha/ajude-arcade-lunar-se-tornar-realidade?utm_source=site&utm_medium=product-thanks-page" class="block px-4 py-2 bold" style="color: white;">Nos apoie</a></li>
+        
+        </ul>
+      </div>
+    </div>
+  </header>
+  
+
+ 
+  <section class="bg-gray-900 text-white centered-section">
+    <div class="mx-auto max-w-screen-xl px-4 py-32 lg:h-full lg:items-center centered-content">
+      <div class="mx-auto max-w-3xl">
+        <h1 class="font-extrabold text-transparent" style="color: white; font-size: 2em;">
+            Embarque em sua aventura com
+          <span class="sm:block bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl"> Arcade Lunar </span>
+        </h1>
+        <p class="mx-auto mt-4 max-w-xl sm:text-xl/relaxed">
+            Entre em um mundo onde conexões perfeitas o transportam para emocionantes aventuras de jogos, viajando ao lado de jogadores de todo o mundo.
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a
+            class="block w-full rounded border border-blue-600 bg-blue-600 px-12 py-5 text-sm font-medium text-white hover:bg-transparent hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto"
+            href="#"
+           style="border: rgb(89, 0, 255); 
+           background-color: rgb(89, 0, 255);
+           height: fit-content;" >
+            Saiba mais sobre!
+          </a>
+          
+
+          <button class="bg-gray-100 inline-flex py-3 px-5 rounded-lg items-center hover:bg-gray-200 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6" viewBox="0 0 512 512">
+              <path d="M99.617 8.057a50.191 50.191 0 00-38.815-6.713l230.932 230.933 74.846-74.846L99.617 8.057zM32.139 20.116c-6.441 8.563-10.148 19.077-10.148 30.199v411.358c0 11.123 3.708 21.636 10.148 30.199l235.877-235.877L32.139 20.116zM464.261 212.087l-67.266-37.637-81.544 81.544 81.548 81.548 67.273-37.64c16.117-9.03 25.738-25.442 25.738-43.908s-9.621-34.877-25.749-43.907zM291.733 279.711L60.815 510.629c3.786.891 7.639 1.371 11.492 1.371a50.275 50.275 0 0027.31-8.07l266.965-149.372-74.849-74.847z" style="color: #4B5563;"></path>
+            </svg>
+            <span class="flex items-start flex-col leading-none" style="margin-left: 1em;">
+              <span class="text-xs text-gray-600 mb-1">Em breve</span>
+              <span class="title-font font-medium" style="color: #4B5563;">Google Play</span>
+            </span>
+          </button>
+        
+
+         
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+  <section class="bg-gray-900 text-white" style="background-color: #010314;" id="sobre">
+    <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+      <div class="mx-auto max-w-lg text-center" data-aos="flip-up" data-aos-delay="50" data-aos-duration="1000">
+        <h2 class="text-3xl font-bold sm:text-4xl inter">O que é o <span class="inter"  style=" background: linear-gradient(to right, #8d47fd, #2a78f5, #a855f7);
+          -webkit-background-clip: text;
+          color: transparent;">Arcade lunar?</span></h1></h2>
+  
+        <p class="mt-4 text-gray-300 inter" >
+          Arcade Lunar é um portal mágico para reinos de jogos, onde os jogadores podem compartilhar suas aventuras em tempo real, transmitindo seu gameplay, trocando truques e estratégias, e se conectando com uma comunidade vibrante de colegas viajantes.
+        </p>
+      </div>
+  
+      <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <a data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000"
+          class="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10"
+         
+        style="background-color: #191817;">
+        <svg viewBox="0 0 128 128" id="Layer_1" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        
+            class="size-10 text-green-500"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+           style="color: rgb(128, 33, 236);">
+
+          <g>
+          
+          <path d="M64,42c-13.2,0-24,10.8-24,24s10.8,24,24,24s24-10.8,24-24S77.2,42,64,42z M64,82c-8.8,0-16-7.2-16-16s7.2-16,16-16   s16,7.2,16,16S72.8,82,64,82z"/>
+          
+          <path d="M64,100.8c-14.9,0-29.2,6.2-39.4,17.1l-2.7,2.9l5.8,5.5l2.7-2.9c8.8-9.4,20.7-14.6,33.6-14.6s24.8,5.2,33.6,14.6l2.7,2.9   l5.8-5.5l-2.7-2.9C93.2,107.1,78.9,100.8,64,100.8z"/>
+          
+          <path d="M97,47.9v8c9.4,0,18.1,3.8,24.6,10.7l5.8-5.5C119.6,52.7,108.5,47.9,97,47.9z"/>
+          
+          <path d="M116.1,20c0-10.5-8.6-19.1-19.1-19.1S77.9,9.5,77.9,20S86.5,39.1,97,39.1S116.1,30.5,116.1,20z M85.9,20   c0-6.1,5-11.1,11.1-11.1s11.1,5,11.1,11.1s-5,11.1-11.1,11.1S85.9,26.1,85.9,20z"/>
+          
+          <path d="M31,47.9c-11.5,0-22.6,4.8-30.4,13.2l5.8,5.5c6.4-6.9,15.2-10.7,24.6-10.7V47.9z"/>
+          
+          <path d="M50.1,20C50.1,9.5,41.5,0.9,31,0.9S11.9,9.5,11.9,20S20.5,39.1,31,39.1S50.1,30.5,50.1,20z M31,31.1   c-6.1,0-11.1-5-11.1-11.1S24.9,8.9,31,8.9s11.1,5,11.1,11.1S37.1,31.1,31,31.1z"/>
+          
+          </g>
+          
+          </svg>
+  
+          <h2 class="mt-4 text-xl font-bold text-white inter">Função de Comunidades!</h2>
+  
+          <p class="mt-1 text-sm text-gray-300 inter" id="funcionalidades">
+            A função de comunidades está sendo trabalhada, será possível criar vários chats em apenas 1 comunidade, e muito mais! Será possível implementar banners animados em comunidades e banners animados para fundos de chat, incluindo logotipos animados para a comunidade.
+          </p>
+        </a>
+  
+        <a data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000"
+          class="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10"
+          href="#"
+          style="background-color: #191817;"
+        >
+        <svg viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#8021ec" stroke="#8021ec"       
+        class="size-10">
+          
+          
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>profile_image_round [#8021ec021ec]</title> <desc>Created with Sketch.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Dribbble-Light-Preview" transform="translate(-380.000000, -2199.000000)" fill="#8021ec"> <g id="icons" transform="translate(56.000000, 160.000000)"> <path d="M342,2055.615 C342,2055.722 341.97,2055.821 341.939,2055.918 C341.723,2052.974 339.918,2050.482 337.375,2049.283 C338.368,2048.369 339,2047.071 339,2045.615 C339,2043.534 337.728,2041.753 335.92,2041 L341,2041 C341.552,2041 342,2041.063 342,2041.615 L342,2055.615 Z M339.963,2057 L327.975,2057 C327.974,2057 327.969,2056.741 327.969,2056.701 C327.969,2053.605 330.326,2050.96 333.339,2050.645 C334,2050.733 334.255,2050.622 334.623,2050.576 C337.625,2050.902 339.969,2053.623 339.969,2056.71 C339.969,2056.75 339.964,2057 339.963,2057 L339.963,2057 Z M326,2055.615 L326,2041.615 C326,2041.063 326.448,2041 327,2041 L332.08,2041 C330.272,2041.753 329,2043.534 329,2045.615 C329,2047.06 329.622,2048.351 330.602,2049.264 C328.107,2050.422 326.307,2052.82 326.012,2055.675 C326.011,2055.654 326,2055.636 326,2055.615 L326,2055.615 Z M337,2045.615 C337,2047.055 335.979,2048.26 334.623,2048.548 C334.033,2048.5 333.868,2048.508 333.368,2048.545 C332.017,2048.254 331,2047.052 331,2045.615 C331,2043.961 332.346,2042.615 334,2042.615 C335.654,2042.615 337,2043.961 337,2045.615 L337,2045.615 Z M342,2039 L326,2039 C324.895,2039 324,2039.895 324,2041 L324,2057 C324,2058.104 324.895,2059 326,2059 L342,2059 C343.105,2059 344,2058.104 344,2057 L344,2041 C344,2039.895 343.105,2039 342,2039 L342,2039 Z" id="profile_image_round-[#8021ec021ec]"> </path> </g> </g> </g> </g></svg>
+  
+          <h2 class="mt-4 text-xl font-bold text-white inter">Função de Perfil!</h2>
+  
+          <p class="mt-1 text-sm text-gray-300 inter">
+           
+            Agora os perfis têm uma segurança aumentada ao fazer login em uma conta, o e-mail registrado na conta permanecerá oculto nas configurações. Como você vê meu e-mail na conta? Para isso, você deve passar pela segunda senha para acessar seu e-mail. 
+          </p>
+        </a>
+  
+      
+        <a data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000"
+          class="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10"
+          href="#"
+          style="background-color: #191817;"
+        >
+        <svg viewBox="0 0 24 24" fill="none"  xmlns="http://www.w3.org/2000/svg"
+        class="size-10"
+        stroke="currentColor"
+        style="color: rgb(128, 33, 236);">
+          <path  stroke-linecap="round"
+          stroke-linejoin="round"  style="color: #8021ec;"
+          stroke-width="2" d="M6 10H6.75C7.44036 10 8 10.5596 8 11.25V14.75C8 15.4404 7.44036 16 6.75 16H6C4.34315 16 3 14.6569 3 13C3 11.3431 4.34315 10 6 10ZM6 10V9C6 5.68629 8.68629 3 12 3C15.3137 3 18 5.68629 18 9V10M18 10H17.25C16.5596 10 16 10.5596 16 11.25V14.75C16 15.4404 16.5596 16 17.25 16H18M18 10C19.6569 10 21 11.3431 21 13C21 14.6569 19.6569 16 18 16M18 16L17.3787 18.4851C17.1561 19.3754 16.3562 20 15.4384 20H13" stroke="#8021ec" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+  
+          <h2 class="mt-4 text-xl font-bold text-white inter">Função de Áudio!</h2>
+  
+          <p class="mt-1 text-sm text-gray-300 inter">
+            Áudios agora serão possíveis no Arcade Lunar! Podendo interagir por voz e comunicar de maneira mais prática.
+          </p>
+        </a>
+  
+       
+  
+        
+      </div>
+  
+      
+    </div>
+    
+  </section>
+<!-- Component: função premium  -->
+<section style="background-color: #010314;" id="premium">
+    <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16 big">
+
+       <div class="w-full flex flex-col bigtwo" data-aos="fade"  data-aos-delay="60" data-aos-duration="1000" data-aos-once="true" style="padding-left: 1em;">
+            <h1 class="inline-block poppins font-bold text-4xl text-white">Função Premium!</h1>
+            <h2 class="inter" style="font-size: 30px; color: #6B3AEE; font-weight: 300;">No Plano Premium é possível desbloquear várias coisas, citando alguns exemplos:</h2>
+       </div>
+        <div class="w-full flex flex-col bigtre" style="padding-left: 1em;">
+          <div class="flex w-full" data-aos="fade"  data-aos-delay="60" data-aos-duration="1000" data-aos-once="true">
+            <svg class="fixed-size" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M8.5 12.5L10.5 14.5L15.5 9.5" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7" stroke="#6B3AEE" stroke-width="1.5" stroke-linecap="round"></path> </g></svg>
+            <h1 class="text-white inter" style="margin-top: 5px; margin-left: 10px; font-size: 18px; font-weight: 500; line-height: 31px;">Logotipos personalizados para o próprio aplicativo.</h1>
+          </div>
+
+          <div class="flex w-full" data-aos="fade"  data-aos-delay="65" data-aos-duration="1000" data-aos-once="true">
+            <svg class="fixed-size" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M8.5 12.5L10.5 14.5L15.5 9.5" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7" stroke="#6B3AEE" stroke-width="1.5" stroke-linecap="round"></path> </g></svg>
+            <h1 class="text-white inter" style="margin-top: 5px; margin-left: 10px; font-size: 18px; font-weight: 500; line-height: 31px;">Decoração de perfil personalizável.</h1>
+          </div>
+
+          <div class="flex w-full" data-aos="fade"  data-aos-delay="70" data-aos-duration="1000" data-aos-once="true">
+            <svg class="fixed-size" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M8.5 12.5L10.5 14.5L15.5 9.5" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7" stroke="#6B3AEE" stroke-width="1.5" stroke-linecap="round"></path> </g></svg>
+            <h1 class="text-white inter" style="margin-top: 5px; margin-left: 10px; font-size: 18px; font-weight: 500; line-height: 31px;">IA exclusiva para premium oferecendo mais recursos.</h1>
+          </div>
+
+          <div class="flex w-full" data-aos="fade"  data-aos-delay="75" data-aos-duration="1000" data-aos-once="true">
+            <svg class="fixed-size" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M8.5 12.5L10.5 14.5L15.5 9.5" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7" stroke="#6B3AEE" stroke-width="1.5" stroke-linecap="round"></path> </g></svg>
+            <h1 class="text-white inter" style="margin-top: 5px; margin-left: 10px; font-size: 18px; font-weight: 500; line-height: 31px;">Papéis de parede para chat privado.</h1>
+          </div>
+
+          <div class="flex w-full" data-aos="fade" data-aos-delay="80" data-aos-duration="1000" data-aos-once="true">
+            <svg class="fixed-size" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M8.5 12.5L10.5 14.5L15.5 9.5" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7" stroke="#6B3AEE" stroke-width="1.5" stroke-linecap="round"></path> </g></svg>
+            <h1 class="text-white inter" style="margin-top: 5px; margin-left: 10px; font-size: 18px; font-weight: 500; line-height: 31px;">Mais recursos exclusivos para verificados.</h1>
+          </div>
+        </div>
+
+        
+    </div>
+ 
+</section>
+
+  
+</div>
+<section style="background-color: #010314;" id="lançamento" >
+  
+  <div class="styles_divider__elk7j">
+
+  </div>
+  
+    <div class="puro" data-aos="fade" data-aos-delay="50" data-aos-duration="1000" style="padding-left: 1.1em; padding-right: 1.1em;">
+      
+        <span class="textao inter font-bold sm:text-4xl" >Qual é a data de lançamento?</span>
+        <p class="text-white inter" style="max-width: 1280px; text-align: center; margin-top: 2em; font-weight: 400; font-size: 14px; line-height: 28px; color: rgb(223, 225, 244);">Sobre o Arcade Lunar, sua expectativa pode ter aumentado, ansioso para mergulhar neste mundo encantador rapidamente. Fique tranquilo, compartilhamos o mesmo entusiasmo, alimentado por nossa dedicação desde 2023 para revelar uma plataforma que não é apenas divertida e amigável, mas também acessível a todos. Recentemente, dentro de nossos reinos do Discord, revelamos 13 de novembro como a data de lançamento destinada, mas com seu apoio, podemos acelerar este momento mágico. Nenhuma contribuição monetária é necessária; apenas mergulhe em nossa comunidade, compartilhe e promova o crescimento do nosso refúgio de sonhadores.</p>
+          
+
+        
+
+
+
+
+
+    </div>
+</section>
+
+
+
+
+<section style="background-color: #010314;" id="faq" >
+	<div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16 inter" style="color: white;" >
+
+
+		<div class="flex flex-col mb-16 sm:text-center">
+      <a href="/" class="mb-6 sm:mx-auto">
+        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-indigo-50" style="margin-left: 1em;">
+          <svg class="w-10 h-10 text-deep-purple-accent-400" stroke="#6332E8" viewBox="0 0 52 52">
+            <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
+          </svg>
+        </div>
+      </a>
+      <div class="max-w-xl md:mx-auto sm:text-center lg:max-w-2xl" style="padding-left: 1em;">
+        <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight sm:text-4xl md:mx-auto poppins">
+          <span class="relative inline-block">
+            <svg viewBox="0 0 52 24" fill="#6332E8" class="absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-blue-gray-100 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block">
+              <defs>
+                <pattern id="ec5d8ef5-b853-4714-b94f-df28ec98eeb7" x="0" y="0" width=".135" height=".30"><circle cx="1" cy="1" r=".7"></circle></pattern>
+              </defs>
+              <rect fill="url(#ec5d8ef5-b853-4714-b94f-df28ec98eeb7)" width="52" height="24"></rect>
+            </svg>
+            <span class="relative">Perguntas</span>
+          </span>
+          frequentes 
+        </h2>
+        <p class="text-base md:text-lg poppins" style="color: #dfe1f4;">Aqui está uma lista de respostas para as perguntas mais frequentes que recebemos.</p>
+      </div>
+    </div>
+
+    
+		<div class="flex flex-col divide-y sm:px-8 lg:px-12 xl:px-32 dark:divide-gray-300" style="padding-left: 1em;">
+			<details>
+				<summary class="py-2 outline-none cursor-pointer focus:underline poppins font-bold" style="color: #8d63ff;">O Arcade Lunar é o mesmo que o Omlet Arcade?</summary>
+				<div class="px-4 pb-4">
+					<p>Não, Arcade Lunar e Omlet Arcade são produtos diferentes. Eles oferecem recursos distintos apesar de serem plataformas para streaming e interação social entre jogadores. Arcade Lunar oferece uma experiência de streaming única com recursos adaptados especificamente para jogos, incluindo integração avançada de tecnologia lunar.</p>
+				</div>
+			</details>
+			<details>
+				<summary class="py-2 outline-none cursor-pointer focus:underline poppins font-bold" style="color: #8d63ff;">Quem são as pessoas responsáveis pela criação do Arcade Lunar?</summary>
+				<div class="px-4 pb-4">
+					<p>Shandowriser CEO e Fundador do projeto.<br>
+            Emptyxz segundo CEO da empresa.<br>
+            Scarin terceiro CEO da empresa.</p>
+				</div>
+			</details>
+			<details>
+				<summary class="py-2 outline-none cursor-pointer focus:underline poppins font-bold" style="color: #8d63ff;">O que diferencia o Arcade Lunar de outras plataformas?</summary>
+				<div class="px-4 pb-4 space-y-2">
+					<p>O Arcade Lunar está focado em mídia social e Multijogador incluindo streaming, uma plataforma que está quase completa, entre outros.</p>
+				</div>
+			</details>
+      <details>
+				<summary class="py-2 outline-none cursor-pointer focus:underline poppins font-bold" style="color: #8d63ff;">O Arcade Lunar será gratuito?</summary>
+				<div class="px-4 pb-4 space-y-2">
+					<p>Sim! Completamente grátis! estará disponível em breve na play store e para Desktop!</p>
+				</div>
+			</details>
+		</div>
+	</div>
+</section>
+
+
+
+<section style="background-color: #010314; padding-top: 5em;">
+  <div class="puro2" style="padding-bottom: 5em;" >
+
+   
+    <div class="flex w-full items-center content-center" style="flex-direction: column;" data-aos="fade" data-aos-delay="50" data-aos-duration="1000">
+      <img src="assets/img/gg.png" alt="img" style="max-width: 1000px; min-width: 300px; width: 100%;">
+    </div>
+     <span class="textao poppins text-4xl" style=" text-align: center; font-weight: 500; font-size: 52px;">Acompanhe as novidades</span>
+     <p class="text-white inter" style="text-align: center; margin-top: 2em; font-weight: 400; font-size: 20px; line-height: 28px; color: #dfe1f4;">Entre no nosso servidor oficial do discord e fique bom dentro de todas as novidades sobre o projeto!</p>
+
+     <div class="flex flex-col md:flex-row items-center justify-center mt-4 space-y-4 md:space-y-0 md:space-x-4">
+      <a
+        class="select-none rounded-lg bg-gray-900 py-3 px-6 text-center font-sans text-xs font-bold uppercase text-white shadow-md transition-all hover:shadow-lg focus:opacity-85 focus:shadow-none active:opacity-85 active:shadow-none disabled:pointer-events-none disabled:opacity-50"
+        style="font-weight: 500; background-color: #4D60E8; cursor: pointer;"
+        href="https://discord.com/invite/arcade-lunar-1199070914072019064"
+      >
+        Entrar no servidor!
+      </a>
+      <a
+        class="select-none rounded-lg bg-gray-900 py-3 px-6 text-center font-sans text-xs font-bold uppercase text-black shadow-md transition-all hover:shadow-lg focus:opacity-85 focus:shadow-none active:opacity-85 active:shadow-none disabled:pointer-events-none disabled:opacity-50"
+        style="font-weight: 500; background-color: #ffffff; cursor: pointer; width: 182px;"
+        href="https://www.vakinha.com.br/vaquinha/ajude-arcade-lunar-se-tornar-realidade?utm_source=site&utm_medium=product-thanks-page" id="doacao"
+      >
+        Faça uma doação
+      </a>
+    </div>
+ 
+  </div>
+
+  
+
+</section>
+
+
+<!-- component -->
+<!-- Foooter -->
+<section style="background-color: #010314;" >
+  <div class="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
+      <nav class="flex flex-wrap justify-center -mx-5 -my-2">
+          <div class="px-5 py-2">
+              <a href="#sobre" class="text-base leading-6" style="color: #8385a5;">
+                  Sobre
+              </a>
+          </div>
+          <div class="px-5 py-2">
+              <a href="#funcionalidades" class="text-base leading-6" style="color: #8385a5;">
+                Funcionalidades
+              </a>
+          </div>
+          <div class="px-5 py-2">
+              <a href="#premium" class="text-base leading-6" style="color: #8385a5;">
+                  Premium
+              </a>
+          </div>
+          <div class="px-5 py-2">
+              <a href="#faq" class="text-base leading-6" style="color: #8385a5;">
+                  Faq
+              </a>
+          </div>
+          <div class="px-5 py-2">
+              <a href="#lancamento" class="text-base leading-6" style="color: #8385a5;">
+                Lançamento
+              </a>
+          </div>
+          
+      </nav>
+      <div class="flex justify-center mt-8 space-x-6" >
+          <a href="https://discord.com/invite/arcade-lunar-1199070914072019064" class="text-gray-400 hover:text-gray-500">
+              <span class="sr-only">Discord</span>
+              
+
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 50 50"
+               fill="currentColor">
+                <path d="M 41.625 10.769531 C 37.644531 7.566406 31.347656 7.023438 31.078125 7.003906 C 30.660156 6.96875 30.261719 7.203125 30.089844 7.589844 C 30.074219 7.613281 29.9375 7.929688 29.785156 8.421875 C 32.417969 8.867188 35.652344 9.761719 38.578125 11.578125 C 39.046875 11.867188 39.191406 12.484375 38.902344 12.953125 C 38.710938 13.261719 38.386719 13.429688 38.050781 13.429688 C 37.871094 13.429688 37.6875 13.378906 37.523438 13.277344 C 32.492188 10.15625 26.210938 10 25 10 C 23.789063 10 17.503906 10.15625 12.476563 13.277344 C 12.007813 13.570313 11.390625 13.425781 11.101563 12.957031 C 10.808594 12.484375 10.953125 11.871094 11.421875 11.578125 C 14.347656 9.765625 17.582031 8.867188 20.214844 8.425781 C 20.0625 7.929688 19.925781 7.617188 19.914063 7.589844 C 19.738281 7.203125 19.34375 6.960938 18.921875 7.003906 C 18.652344 7.023438 12.355469 7.566406 8.320313 10.8125 C 6.214844 12.761719 2 24.152344 2 34 C 2 34.175781 2.046875 34.34375 2.132813 34.496094 C 5.039063 39.605469 12.972656 40.941406 14.78125 41 C 14.789063 41 14.800781 41 14.8125 41 C 15.132813 41 15.433594 40.847656 15.621094 40.589844 L 17.449219 38.074219 C 12.515625 36.800781 9.996094 34.636719 9.851563 34.507813 C 9.4375 34.144531 9.398438 33.511719 9.765625 33.097656 C 10.128906 32.683594 10.761719 32.644531 11.175781 33.007813 C 11.234375 33.0625 15.875 37 25 37 C 34.140625 37 38.78125 33.046875 38.828125 33.007813 C 39.242188 32.648438 39.871094 32.683594 40.238281 33.101563 C 40.601563 33.515625 40.5625 34.144531 40.148438 34.507813 C 40.003906 34.636719 37.484375 36.800781 32.550781 38.074219 L 34.378906 40.589844 C 34.566406 40.847656 34.867188 41 35.1875 41 C 35.199219 41 35.210938 41 35.21875 41 C 37.027344 40.941406 44.960938 39.605469 47.867188 34.496094 C 47.953125 34.34375 48 34.175781 48 34 C 48 24.152344 43.785156 12.761719 41.625 10.769531 Z M 18.5 30 C 16.566406 30 15 28.210938 15 26 C 15 23.789063 16.566406 22 18.5 22 C 20.433594 22 22 23.789063 22 26 C 22 28.210938 20.433594 30 18.5 30 Z M 31.5 30 C 29.566406 30 28 28.210938 28 26 C 28 23.789063 29.566406 22 31.5 22 C 33.433594 22 35 23.789063 35 26 C 35 28.210938 33.433594 30 31.5 30 Z"></path>
+                </svg>
+          </a>
+      </div>
+      <p class="mt-8 text-base leading-6 text-center text-gray-400">
+          © 2024 Arcade Lunar company, Inc. All rights reserved.
+      </p>
+  </div>
+</section>
+
+
+
+<!-- End função premium  -->
+
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: false
+        });
+    </script>
+<script>
+  document.getElementById('menu-button').addEventListener('click', function() {
+    var menu = document.getElementById('mobile-menu');
+    if (menu.classList.contains('hidden')) {
+      menu.classList.remove('hidden');
+      menu.classList.add('block');
+    } else {
+      menu.classList.remove('block');
+      menu.classList.add('hidden');
+    }
+  });
+</script>
+  
+</body>
+
+</html>
